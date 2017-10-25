@@ -8,8 +8,7 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = ('first_name', 'balance', 'id')
 
-        # customer = Customer(code='foo = "bar"\n')
-        # customer.save()
+
 
 class ExecuterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,11 +17,11 @@ class ExecuterSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.ModelSerializer):
-    owner = ExecuterSerializer(read_only=True)
-    owner = CustomerSerializer(read_only=True)
+    created_by = ExecuterSerializer()
+    owner = CustomerSerializer()
 
     class Meta:
         model = Task
-        fields = ('title', 'price', 'description', 'owner', 'created_by')
+        fields = ('title', 'price', 'description', 'created_by' 'owner')
 
 
