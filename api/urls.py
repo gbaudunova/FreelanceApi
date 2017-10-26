@@ -9,9 +9,6 @@ router.register(r'executer', ExecuterViewSet, base_name='executer')
 router.register(r'customer', CustomerViewSet, base_name='customer')
 router.register(r'tasks', TaskViewSet, base_name='tasks')
 
-# urlpatterns = [
-#     # url(r'^forgot-password/$', ForgotPasswordFormView.as_view()),
-#     url(r'^', include(router.urls)),
-# ]
+
 urlpatterns = router.urls
 
