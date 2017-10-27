@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 from rest_framework import viewsets
 from .serializers import ExecuterSerializer, TaskSerializer, CustomerSerializer
-from django.dispatch import receiver
-from django.db.models.signals import post_save
+# from django.dispatch import receiver
+# from django.db.models.signals import post_save
 from users.models import Customer, Executer
 from task.models import Task
-
 
 
 
