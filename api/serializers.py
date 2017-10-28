@@ -9,21 +9,15 @@ class CustomerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-
 class ExecuterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Executer
         fields = '__all__'
 
 
-
 class TaskSerializer(serializers.ModelSerializer):
     # customer = CustomerSerializer(read_only=True)
-
     # executer = ExecuterSerializer(read_only=True)
-
-
 
     class Meta:
         model = Task
