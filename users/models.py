@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import F
-
-
+from myblog.signals import task_completed
+from django.contrib.messages import success
 
 
 class Executer(models.Model):
@@ -16,6 +16,12 @@ class Executer(models.Model):
             filter(pk=id)\
             .update(balance=F('balance') + balance)
 
+        if success:
+            task_completed.send_robust(
+                sender=id,
+                balance=balance,
+            )
+
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=100, verbose_name='name')
@@ -28,4 +34,10 @@ class Customer(models.Model):
         Customer.objects.select_for_update(). \
             filter(pk=id) \
             .update(balance=F('balance') - balance)
+
+        if success:
+            task_completed.send_robust(
+                sender=id,
+                balance=balance,
+            )
 
