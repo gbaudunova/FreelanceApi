@@ -1,11 +1,8 @@
 from __future__ import unicode_literals
 from rest_framework import viewsets
 from .serializers import ExecuterSerializer, TaskSerializer, CustomerSerializer
-# from django.dispatch import receiver
-# from django.db.models.signals import post_save
 from users.models import Customer, Executer
 from task.models import Task
-
 
 
 class ExecuterViewSet(viewsets.ModelViewSet):
@@ -15,10 +12,12 @@ class ExecuterViewSet(viewsets.ModelViewSet):
 
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
+
     serializer_class = CustomerSerializer
 
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
+    print(queryset)
     serializer_class = TaskSerializer
 
