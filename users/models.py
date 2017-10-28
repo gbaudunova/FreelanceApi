@@ -11,10 +11,9 @@ class Executer(models.Model):
     def __str__(self):
         return self.first_name
 
-
-    def update_balance(self, balance):
+    def update_balance(self, balance, id):
         Executer.objects.select_for_update(). \
-            filter(pk=self.pk) \
+            filter(pk=id)\
             .update(balance=F('balance') + balance)
 
 
@@ -25,9 +24,8 @@ class Customer(models.Model):
     def __str__(self):
         return self.first_name
 
-
-    def update_balance(self, balance):
+    def update_balance(self, balance, id):
         Customer.objects.select_for_update(). \
-            filter(pk=self.pk) \
+            filter(pk=id) \
             .update(balance=F('balance') - balance)
 

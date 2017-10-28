@@ -19,43 +19,43 @@ class SignalTest(TestCase):
 
     def test_should_send_signal_when_balance_updated(self):
         self.signal_was_called = False
-        self.update_balance = None
+        self.balance = None
 
-        def handler(sender, update_balance, **kwargs):
+        def handler(sender, balance, **kwargs):
             self.signal_was_called = True
-            self.update_balance = update_balance
+            self.balance = balance
 
         task_completed.connect(handler)
 
-        c = Customer.objects.create(balance="1000", id=1)
+        c = Customer.objects.create(balance='1000', id=1)
 
         c.update_balance(1000, 1)
 
         self.assertTrue(self.signal_was_called)
-        self.assertEqual(self.update_balance, 1000)
+        self.assertEqual(self.balance, 1000)
 
         task_completed.disconnect(handler)
 
 
-# class SignalTests(TestCase):
-#     def test_should_send_signal_when_balance_updated(self):
-#         self.signal_was_called = False
-#         self.update_balance = None
-#
-#         def handler(sender, update_balance, **kwargs):
-#             self.signal_was_called = True
-#             self.update_balance = update_balance
-#
-#         task_completed.connect(handler)
-#
-#         a = Customer.objects.create(balance="2000", id=1)
-#
-#         a.update_balance(2000, 1)
-#
-#         self.assertTrue(self.signal_was_called)
-#         self.assertEqual(self.update_balance, 2000)
-#
-#         task_completed.disconnect(handler)
-#
-#
-#
+class SignalTests(TestCase):
+    def test_should_send_signal_when_balance_updated(self):
+        self.signal_was_called = False
+        self.balance = None
+
+        def handler(sender, balance, **kwargs):
+            self.signal_was_called = True
+            self.balance = balance
+
+        task_completed.connect(handler)
+
+        a = Executer.objects.create(balance="2000", id=1)
+
+        a.update_balance(2000, 1)
+
+        self.assertTrue(self.signal_was_called)
+        self.assertEqual(self.balance, 2000)
+
+        task_completed.disconnect(handler)
+
+
+
