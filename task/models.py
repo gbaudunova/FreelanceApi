@@ -18,6 +18,6 @@ class Task(models.Model):
 
 @receiver(post_save, sender=Task)
 def post_update(sender, instance, **kwargs):
-    instance.owner.update_balance(instance.price)
-    instance.created_by.update_balance(instance.price)
+    instance.owner.update_balance(instance.price, instance.owner.id)
+    instance.created_by.update_balance(instance.price, instance.created_by.id)
 
