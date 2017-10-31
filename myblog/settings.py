@@ -25,7 +25,7 @@ SECRET_KEY = 'y87a4f$at!&s-@&$ny5$x_92m7l(jp(b*5%i%7njtl2t*!_6ty'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -93,17 +93,14 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 #     }
 # }
 DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'data',
-    'USER': 'root',
-    'PASSWORD': '27101967mirzigul',
-    'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-    'PORT': '3306',
-    'OPTIONS': {
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        'charset': 'utf8mb4',
-    }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'data',
+        'USER': 'root',
+        'PASSWORD': '27101967mirzigul',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+
 }
 }
 

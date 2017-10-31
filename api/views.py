@@ -12,12 +12,10 @@ class ExecuterViewSet(viewsets.ModelViewSet):
 
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
-
     serializer_class = CustomerSerializer
 
 
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
-    print(queryset)
     serializer_class = TaskSerializer
 
