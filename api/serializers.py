@@ -6,13 +6,13 @@ from rest_framework import serializers
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = '__all__'
+        fields = ('id', 'first_name', 'balance')
 
 
 class ExecuterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Executer
-        fields = '__all__'
+        fields = ('id', 'first_name', 'balance')
 
 
 class TaskSerializer(serializers.ModelSerializer):
@@ -21,5 +21,6 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = ('id', 'title', 'description', 'price', 'owner', 'created_by')
+
 
