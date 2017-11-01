@@ -8,12 +8,14 @@ services:
       MYSQL_ROOT_PASSWORD: 27101967mirzigul
       MYSQL_DATABASE: data
     volumes:
-      - /var/lib/mysql
+      - "./.data/db:/var/lib/mysql"
   web:
     restart: always
     build: .
-    command: bash -c "python3 ./manage.py migrate && python3 ./manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python3 ./manage.py makemigrations && python3 ./manage.py migrate && python3 ./manage.py runserver 0.0.0.0:8000"
     ports:
-      - "8000"
+      - "8000:8000"
+    volumes:
+      - .:/code
     depends_on:
       - db
